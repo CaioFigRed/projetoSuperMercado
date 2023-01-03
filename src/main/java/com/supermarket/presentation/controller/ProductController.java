@@ -4,8 +4,11 @@ import com.supermarket.data.dto.ProductDTO;
 import com.supermarket.data.entity.Product;
 import com.supermarket.domain.service.impl.ProductServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.ByteArrayResource;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+
 import java.util.List;
 import static org.springframework.http.HttpStatus.*;
 
@@ -51,5 +54,9 @@ public class ProductController {
         return service.saveImage(id, file);
     }
 
+    @GetMapping("/imagem/{id}")
+    public String imagem(@PathVariable Integer id) {
+        return service.mostrarImagem(id);
+    }
 
 }
